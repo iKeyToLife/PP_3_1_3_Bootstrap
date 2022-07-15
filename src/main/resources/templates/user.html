@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+
+    <style type="text/css">
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-radius: 10px;
+            border-spacing: 0;
+            text-align: center;
+        }
+
+        th {
+            background: #2d2d2d;
+            color: mediumspringgreen;
+            text-shadow: 0 1px 1px blueviolet;
+            padding: 10px 20px;
+        }
+
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+            border-right: none;
+        }
+
+        td {
+            padding: 10px 20px;
+            background: gold;
+        }
+
+        tr:last-child td:first-child {
+            border-radius: 0 0 0 10px;
+        }
+
+        tr:last-child td:last-child {
+            border-radius: 0 0 10px 0;
+        }
+
+        tr td:last-child {
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+<h1>User, welcome spring boot security page!</h1>
+<br><br>
+<a th:href="@{/logout}">Logout</a>
+<br><br>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>age name</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    <tr th:object="${user}">
+        <td th:utext="${user.getId}">id</td>
+        <td th:utext="${user.getFirstName()}">First name</td>
+        <td th:utext="${user.getLastName()}">Last name</td>
+        <td th:utext="${user.getAge()}">Age</td>
+        <td th:utext="${user.getEmail}">Email</td>
+        <td><span th:each="roles : ${user.getRoles()}" th:utext= "${roles.toString()}+'  '">Roles</span></td>
+    </tr>
+</table>
+</body>
+</html>
