@@ -30,6 +30,6 @@ public class DataBaseInit {
         userService.save(new User("admin", "admin", 20, "admin"), rolesAdmin, "admin");
 
         String[] rolesUser = {"ROLE_USER"};
-        userService.save(new User("user", "user", 20, "user"), rolesUser, "admin");
+        userService.save(new User("user", "user", 20, "user"), rolesUser, "user");
     }
 }

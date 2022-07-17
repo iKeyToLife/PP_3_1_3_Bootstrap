@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public void update(User user, long id, String[] roles, String pass) {
         user.setId(id);
-        user.setPassword(passwordEncoder.encode(pass));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.stream(roles)
                 .map(roleService::findByRole)
                 .collect(Collectors.toSet()));
